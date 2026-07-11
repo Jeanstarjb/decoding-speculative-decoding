@@ -1,0 +1,17 @@
+FROM nvcr.io/nvidia/pytorch:22.12-py3
+
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.draft_model.txt ./
+RUN pip install --no-cache-dir -r requirements.draft_model.txt
+
+# Copy the draft model code
+COPY draft_model ./draft_model
+
+# Set environment variables for TensorRT
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
+
+# Set the entry point for the draft model service
+CMD ["python", "draft_model/server.py"]
