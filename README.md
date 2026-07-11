@@ -54,3 +54,4 @@ The Prometheus metrics are exposed at the `/metrics` endpoint. You can access th
 - **Completed Task:** Create unit tests and integration tests for the speculative decoding pipeline to ensure robustness and correctness.
 - **Completed Task:** Develop a user-facing dashboard for visualizing system performance metrics and monitoring hardware utilization.
 - **Completed Task:** Write scripts for deploying the system on Kubernetes, including Helm charts for scaling the inference pipeline.
+- **Completed Task:** Conduct end-to-end performance benchmarking to validate the 111% throughput improvement claim.
