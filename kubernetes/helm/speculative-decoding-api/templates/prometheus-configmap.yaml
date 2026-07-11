@@ -1,0 +1,18 @@
+{{- if .Values.prometheus.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-prometheus-config
+  labels:
+    app: prometheus
+    release: {{ .Release.Name }}
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: {{ .Values.prometheus.scrapeInterval }}
+
+    scrape_configs:
+      - job_name: 'speculative_decoding_api'
+        static_configs:
+          - targets: ['{{ .Release.Name }}-speculative-decoding-api:{{ .Values.service.port }}']
+{{- end }}
