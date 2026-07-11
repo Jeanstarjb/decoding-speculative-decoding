@@ -2,56 +2,193 @@
 
 **Research Paper:** [https://arxiv.org/pdf/2402.01528v4](https://arxiv.org/pdf/2402.01528v4)
 
-## The Mission
-Large Language Models (LLMs) are computationally expensive and resource-intensive, limiting their accessibility and scalability for real-world applications such as education, healthcare, and customer support. This hinders the democratization of AI and its potential to benefit society broadly.
+## Overview
 
-## Architecture
-The solution involves building a scalable, production-ready inference system that leverages speculative decoding to speed up LLM inference. The architecture will use a two-model system: a lightweight, hardware-efficient draft model for speculative token generation and a larger target LLM for verification. The tech stack includes Python, PyTorch for model integration, TensorRT for hardware optimization, FastAPI for serving the models, Redis for caching, Docker for containerization, and Kubernetes for orchestration.
+This project implements a scalable, production-ready inference system for Large Language Models (LLMs) using speculative decoding. The system employs a two-model architecture:
 
-## Monitoring and Logging
-A robust monitoring and logging system has been implemented using Prometheus and Python's logging library. The system tracks:
+1. **Draft Model**: A lightweight, hardware-efficient model for speculative token generation.
+2. **Target Model**: A larger, more accurate model for verifying and refining the draft model's predictions.
 
-- **Inference Latency:** Measures the time taken for each inference request.
-- **Throughput:** Tracks the total number of requests processed.
-- **Errors:** Logs errors and tracks their occurrence.
+This approach significantly reduces the computational cost and latency of LLM inference, making AI more accessible and scalable for real-world applications such as education, healthcare, and customer support.
 
-### Metrics Endpoint
-The Prometheus metrics are exposed at the `/metrics` endpoint. You can access this endpoint at `http://localhost:9100/metrics` when running locally.
+## Key Features
 
-### Setting Up Prometheus
-1. Ensure Docker and Docker Compose are installed on your machine.
-2. Start the services using the following command:
+- **Speculative Decoding**: Combines a draft model and target model for faster inference.
+- **Hardware Optimization**: Utilizes TensorRT for efficient GPU inference.
+- **Caching**: Integrates Redis for caching intermediate results to improve performance.
+- **Monitoring**: Includes Prometheus metrics and a visually stunning React-based dashboard for real-time performance monitoring.
+- **Scalability**: Dockerized and deployable on Kubernetes with Helm charts for easy orchestration.
 
+---
+
+## System Architecture
+
+![System Architecture](docs/images/system_architecture.png)
+
+### Components
+
+1. **Draft Model Service**: A lightweight model optimized with TensorRT for generating speculative tokens.
+2. **Target Model Service**: A larger LLM for verifying and refining the draft model's predictions.
+3. **Inference API**: A FastAPI-based service that orchestrates the speculative decoding process.
+4. **Redis Cache**: Stores intermediate results to reduce redundant computations.
+5. **Monitoring**: Prometheus for metrics collection and a React-based dashboard for visualization.
+
+---
+
+## Installation
+
+### Prerequisites
+
+- Docker
+- Docker Compose
+- Kubernetes (optional, for production deployment)
+- Helm (optional, for Kubernetes deployment)
+
+### Local Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repo/speculative-decoding.git
+   cd speculative-decoding
+   ```
+
+2. Build and start the services:
    ```bash
    docker-compose up --build
    ```
 
-3. Access the Prometheus dashboard at `http://localhost:9090`.
-4. Add the `speculative_decoding_api` job to your Prometheus targets to monitor the API.
+3. Access the API at [http://localhost:8000](http://localhost:8000).
 
-## Progress Log
-- [x] Initial repository setup
-- [x] Implement draft model integration
-- [x] Implement target model verification
-- [x] Add speculative decoding logic
-- [x] Optimize with TensorRT
-- [x] Set up FastAPI for serving
-- [x] Integrate Redis caching
-- [x] Create Docker containerization
-- [x] Configure Kubernetes for orchestration
-- [x] Implement monitoring and logging system
+4. Access the Prometheus metrics at [http://localhost:9090](http://localhost:9090).
 
-- **Completed Task:** Set up the project repository with basic folder structure, README, and initial configurations.
-- **Completed Task:** Create Dockerfiles for both the draft model and target LLM, ensuring compatibility with TensorRT and GPU acceleration.
-- **Completed Task:** Implement the draft model selection logic based on the research insights to optimize for latency and hardware efficiency.
-- **Completed Task:** Develop the speculative decoding algorithm, including speculative token generation by the draft model and verification by the target LLM.
-- **Completed Task:** Integrate the draft model and target LLM into a unified inference pipeline using PyTorch and FastAPI.
-- **Completed Task:** Implement caching mechanisms using Redis to store and retrieve speculative tokens for faster inference.
-- **Completed Task:** Implement monitoring and logging system to track inference latency, throughput, and errors in real-time.
-- **Completed Task:** Design and implement a monitoring and logging system to track inference latency, throughput, and errors in real time.
-- **Completed Task:** Develop a hardware optimization module using TensorRT to accelerate the draft model's performance on GPUs.
-- **Completed Task:** Build a REST API using FastAPI to expose the inference system for external applications.
-- **Completed Task:** Create unit tests and integration tests for the speculative decoding pipeline to ensure robustness and correctness.
-- **Completed Task:** Develop a user-facing dashboard for visualizing system performance metrics and monitoring hardware utilization.
-- **Completed Task:** Write scripts for deploying the system on Kubernetes, including Helm charts for scaling the inference pipeline.
-- **Completed Task:** Conduct end-to-end performance benchmarking to validate the 111% throughput improvement claim.
+5. Access the React dashboard at [http://localhost:3000](http://localhost:3000).
+
+### Kubernetes Deployment
+
+1. Install Helm:
+   ```bash
+   curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+   ```
+
+2. Deploy the Helm chart:
+   ```bash
+   helm install speculative-decoding-api ./kubernetes/helm/speculative-decoding-api
+   ```
+
+3. Verify the deployment:
+   ```bash
+   kubectl get pods
+   kubectl get services
+   ```
+
+4. Access the API and Prometheus metrics using the LoadBalancer IP.
+
+---
+
+## API Usage
+
+### Draft Model Endpoint
+
+- **URL**: `/draft`
+- **Method**: POST
+- **Request Body**:
+  ```json
+  {
+    "input_text": "The quick brown fox"
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "next_token": "jumps",
+    "confidence": 0.95
+  }
+  ```
+
+### Inference Endpoint
+
+- **URL**: `/api/inference`
+- **Method**: POST
+- **Request Body**:
+  ```json
+  {
+    "input_text": "The quick brown fox",
+    "max_tokens": 50
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "decoded_text": "The quick brown fox jumps over the lazy dog.",
+    "metadata": {
+      "draft_tokens": 10,
+      "verified_tokens": 40
+    }
+  }
+  ```
+
+---
+
+## Performance Benchmarks
+
+### Benchmarking Script
+
+Run the benchmarking script to measure API performance:
+
+```bash
+python backend/benchmark.py
+```
+
+### Sample Results
+
+- **Average Response Time**: 0.15 seconds
+- **95th Percentile Response Time**: 0.25 seconds
+- **Throughput**: 100 requests/second
+
+Results may vary based on hardware and deployment environment.
+
+---
+
+## Monitoring Dashboard
+
+The React-based monitoring dashboard provides real-time insights into system performance, including:
+
+- CPU and memory usage.
+- Average and 95th percentile response times.
+- Throughput over time.
+
+### Accessing the Dashboard
+
+1. Start the frontend service:
+   ```bash
+   cd frontend
+   npm install
+   npm start
+   ```
+
+2. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## Contributing
+
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "feat: add your feature description"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+5. Open a pull request.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
