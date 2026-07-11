@@ -13,7 +13,7 @@
     {
       "id": 2,
       "description": "Create Dockerfiles for both the draft model and target LLM, ensuring compatibility with TensorRT and GPU acceleration.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": 3,
