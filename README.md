@@ -18,3 +18,5 @@ The solution involves building a scalable, production-ready inference system tha
 - [ ] Integrate Redis caching
 - [ ] Create Docker containerization
 - [ ] Configure Kubernetes for orchestration
+
+- **Completed Task:** Set up the project repository with basic folder structure, README, and initial configurations.
