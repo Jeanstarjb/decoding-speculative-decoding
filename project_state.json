@@ -53,7 +53,7 @@
     {
       "id": 10,
       "description": "Create unit tests and integration tests for the speculative decoding pipeline to ensure robustness and correctness.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": 11,
