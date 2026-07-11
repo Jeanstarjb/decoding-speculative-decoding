@@ -1,0 +1,51 @@
+replicaCount: 3
+
+image:
+  repository: speculative-decoding-api
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8000
+
+resources:
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+  requests:
+    cpu: "250m"
+    memory: "256Mi"
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+redis:
+  enabled: true
+  image:
+    repository: redis
+    tag: alpine
+    pullPolicy: IfNotPresent
+  service:
+    port: 6379
+  persistence:
+    enabled: false
+
+prometheus:
+  enabled: true
+  image:
+    repository: prom/prometheus
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    port: 9090
+  scrapeInterval: 15s
+  config:
+    scrape_configs:
+      - job_name: 'speculative_decoding_api'
+        static_configs:
+          - targets: ['speculative-decoding-api:9100']
