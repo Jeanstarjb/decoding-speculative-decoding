@@ -1,0 +1,16 @@
+{{- define "speculative-decoding-api.fullname" -}}
+{{- if .Values.fullnameOverride -}}
+{{ .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
+{{- else -}}
+{{- $name := default .Chart.Name .Values.nameOverride -}}
+{{- if contains "." $name -}}
+{{- $name | trunc 63 | trimSuffix "-" -}}
+{{- else -}}
+{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "speculative-decoding-api.chart" -}}
+{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+{{- end -}}
