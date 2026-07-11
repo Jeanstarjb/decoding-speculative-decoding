@@ -49,3 +49,4 @@ The Prometheus metrics are exposed at the `/metrics` endpoint. You can access th
 - **Completed Task:** Implement caching mechanisms using Redis to store and retrieve speculative tokens for faster inference.
 - **Completed Task:** Implement monitoring and logging system to track inference latency, throughput, and errors in real-time.
 - **Completed Task:** Design and implement a monitoring and logging system to track inference latency, throughput, and errors in real time.
+- **Completed Task:** Develop a hardware optimization module using TensorRT to accelerate the draft model's performance on GPUs.
