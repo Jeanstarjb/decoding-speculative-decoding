@@ -1,0 +1,6 @@
+apiVersion: v2
+name: speculative-decoding-api
+version: 0.1.0
+description: A Helm chart for deploying the speculative decoding API
+
+appVersion: "1.0"
