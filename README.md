@@ -24,3 +24,4 @@ The solution involves building a scalable, production-ready inference system tha
 - **Completed Task:** Implement the draft model selection logic based on the research insights to optimize for latency and hardware efficiency.
 - **Completed Task:** Develop the speculative decoding algorithm, including speculative token generation by the draft model and verification by the target LLM.
 - **Completed Task:** Integrate the draft model and target LLM into a unified inference pipeline using PyTorch and FastAPI.
+- **Completed Task:** Implement caching mechanisms using Redis to store and retrieve speculative tokens for faster inference.
