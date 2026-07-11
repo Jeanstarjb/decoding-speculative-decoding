@@ -194,3 +194,4 @@ The React-based monitoring dashboard provides real-time insights into system per
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 - **Completed Task:** Document the entire system, including installation instructions, API usage, and performance benchmarks.
+- **Completed Task:** Prepare a deployment guide for cloud platforms (e.g., AWS, GCP, Azure) with cost optimization strategies.
