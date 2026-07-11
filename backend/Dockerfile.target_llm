@@ -1,0 +1,17 @@
+FROM nvcr.io/nvidia/pytorch:22.12-py3
+
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.target_llm.txt ./
+RUN pip install --no-cache-dir -r requirements.target_llm.txt
+
+# Copy the target LLM code
+COPY target_llm ./target_llm
+
+# Set environment variables for TensorRT
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
+
+# Set the entry point for the target LLM service
+CMD ["python", "target_llm/server.py"]
