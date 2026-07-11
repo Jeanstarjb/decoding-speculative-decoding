@@ -23,7 +23,7 @@
     {
       "id": 4,
       "description": "Develop the speculative decoding algorithm, including speculative token generation by the draft model and verification by the target LLM.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": 5,
