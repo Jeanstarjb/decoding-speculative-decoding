@@ -9,3 +9,12 @@ Large Language Models (LLMs) are computationally expensive and resource-intensiv
 The solution involves building a scalable, production-ready inference system that leverages speculative decoding to speed up LLM inference. The architecture will use a two-model system: a lightweight, hardware-efficient draft model for speculative token generation and a larger target LLM for verification. The tech stack includes Python, PyTorch for model integration, TensorRT for hardware optimization, FastAPI for serving the models, Redis for caching, Docker for containerization, and Kubernetes for orchestration.
 
 ## Progress Log
+- [x] Initial repository setup
+- [ ] Implement draft model integration
+- [ ] Implement target model verification
+- [ ] Add speculative decoding logic
+- [ ] Optimize with TensorRT
+- [ ] Set up FastAPI for serving
+- [ ] Integrate Redis caching
+- [ ] Create Docker containerization
+- [ ] Configure Kubernetes for orchestration
