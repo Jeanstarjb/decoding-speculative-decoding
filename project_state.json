@@ -28,7 +28,7 @@
     {
       "id": 5,
       "description": "Integrate the draft model and target LLM into a unified inference pipeline using PyTorch and FastAPI.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": 6,
