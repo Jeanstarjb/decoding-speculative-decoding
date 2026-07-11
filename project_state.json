@@ -33,7 +33,7 @@
     {
       "id": 6,
       "description": "Implement caching mechanisms using Redis to store and retrieve speculative tokens for faster inference.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": 7,
