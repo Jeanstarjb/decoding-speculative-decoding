@@ -192,3 +192,5 @@ The React-based monitoring dashboard provides real-time insights into system per
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
+
+- **Completed Task:** Document the entire system, including installation instructions, API usage, and performance benchmarks.
