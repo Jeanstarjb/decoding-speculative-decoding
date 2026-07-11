@@ -22,3 +22,4 @@ The solution involves building a scalable, production-ready inference system tha
 - **Completed Task:** Set up the project repository with basic folder structure, README, and initial configurations.
 - **Completed Task:** Create Dockerfiles for both the draft model and target LLM, ensuring compatibility with TensorRT and GPU acceleration.
 - **Completed Task:** Implement the draft model selection logic based on the research insights to optimize for latency and hardware efficiency.
+- **Completed Task:** Develop the speculative decoding algorithm, including speculative token generation by the draft model and verification by the target LLM.
