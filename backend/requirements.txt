@@ -4,3 +4,4 @@ redis
 torch
 transformers
 tensorrt
+redis-py
