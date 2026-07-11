@@ -51,3 +51,4 @@ The Prometheus metrics are exposed at the `/metrics` endpoint. You can access th
 - **Completed Task:** Design and implement a monitoring and logging system to track inference latency, throughput, and errors in real time.
 - **Completed Task:** Develop a hardware optimization module using TensorRT to accelerate the draft model's performance on GPUs.
 - **Completed Task:** Build a REST API using FastAPI to expose the inference system for external applications.
+- **Completed Task:** Create unit tests and integration tests for the speculative decoding pipeline to ensure robustness and correctness.
