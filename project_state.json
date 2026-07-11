@@ -38,7 +38,7 @@
     {
       "id": 7,
       "description": "Design and implement a monitoring and logging system to track inference latency, throughput, and errors in real time.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": 8,
