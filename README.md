@@ -20,3 +20,4 @@ The solution involves building a scalable, production-ready inference system tha
 - [ ] Configure Kubernetes for orchestration
 
 - **Completed Task:** Set up the project repository with basic folder structure, README, and initial configurations.
+- **Completed Task:** Create Dockerfiles for both the draft model and target LLM, ensuring compatibility with TensorRT and GPU acceleration.
