@@ -63,7 +63,7 @@
     {
       "id": 12,
       "description": "Write scripts for deploying the system on Kubernetes, including Helm charts for scaling the inference pipeline.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": 13,
