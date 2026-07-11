@@ -6,10 +6,11 @@ from .selection import DraftModelSelector
 
 app = FastAPI()
 
-# Initialize the draft model and tokenizer
+# Initialize the draft model, tokenizer, and TensorRT optimizer
 tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
 model = GPT2LMHeadModel.from_pretrained("gpt2")
-draft_model_selector = DraftModelSelector(model=model, device="cuda" if torch.cuda.is_available() else "cpu")
+input_shape = (1, 10)  # Example input shape for the draft model
+draft_model_selector = DraftModelSelector(model=model, input_shape=input_shape, device="cuda" if torch.cuda.is_available() else "cpu")
 
 class DraftRequest(BaseModel):
     input_text: str
