@@ -48,3 +48,4 @@ The Prometheus metrics are exposed at the `/metrics` endpoint. You can access th
 - **Completed Task:** Integrate the draft model and target LLM into a unified inference pipeline using PyTorch and FastAPI.
 - **Completed Task:** Implement caching mechanisms using Redis to store and retrieve speculative tokens for faster inference.
 - **Completed Task:** Implement monitoring and logging system to track inference latency, throughput, and errors in real-time.
+- **Completed Task:** Design and implement a monitoring and logging system to track inference latency, throughput, and errors in real time.
