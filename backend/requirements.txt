@@ -1,4 +1,6 @@
 fastapi
 uvicorn
 redis
-pytorch
+torch
+transformers
+tensorrt
